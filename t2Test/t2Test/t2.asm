@@ -1,18 +1,13 @@
+option casemap:none             ; case sensitive
 includelib legacy_stdio_definitions.lib
 extrn printf:near
-.data
-
-
-option casemap:none             ; case sensitive
- 
-
 .data								; start of a data section
 public g							; export variable g
 g QWORD 4							; declare global variable g initialised to 4
 
 .code
 
-public min
+	public min
 min:
 	mov rax, rcx		;v = a
 	cmp rdx, rax		;if (b<v)
@@ -28,7 +23,7 @@ cgreaterthan:
 	ret 0
 
 
-public p
+	public p
 p:
 	sub rsp, 32			;allocate shadow space
 	mov rbx, r8			;tmp = k
@@ -54,7 +49,7 @@ p:
 ;}
 
 
-public gcd
+	public gcd
 gcd:
 	mov rax, rcx
 	mov rbx, rdx
@@ -81,25 +76,29 @@ notEqual:
 fq db 'a = %I64d b = %I64d c = %I64d d = %I64d e = %I64d sum = %I64d\n', 0AH, 00H
 
 
-public q
+	public q
 q:
 	
-	mov rbx, [rsp+32]		;e
-	sub rsp, 56				;allocate stack space
-	add rax, rcx
-	add rax, rdx
-	add rax, r8
-	add rax, r9
-	add rax, rbx
+	mov r10, [rsp+40]		;e
+	push rbx
+	sub rsp, 48				;allocate stack space
+	mov rbx, rcx			;sum = a
+	add rbx, rdx			;sum += b
+	add rbx, r8				;sum += c
+	add rbx, r9				;sum += d
+	add rbx, r10			;sum += e
 
-	mov [rsp + 48], rax
-	mov [rsp + 40], rbx
-	mov [rsp + 32], r9
-	mov r9, r8
-	mov r8, rdx
-	mov rdx, rcx
-	lea rcx, fq
-	call printf
+	mov [rsp + 48], rbx		;sum
+	mov [rsp + 40], r10		;e
+	mov [rsp + 32], r9		;d
+	mov r9, r8				;c
+	mov r8, rdx				;b
+	mov rdx, rcx			;a
+	lea rcx, fq				;String
+	call printf			
+	mov rax, rbx			;return sum
+	add rsp, 48
+	pop rbx
 	ret 0
 
-end	
+	end	

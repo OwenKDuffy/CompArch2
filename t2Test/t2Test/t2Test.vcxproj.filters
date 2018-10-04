@@ -28,11 +28,11 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="fib64.asm">
+    <MASM Include="fib64.asm">
       <Filter>Source Files</Filter>
-    </None>
-    <None Include="t2.asm">
+    </MASM>
+    <MASM Include="t2.asm">
       <Filter>Source Files</Filter>
-    </None>
+    </MASM>
   </ItemGroup>
 </Project>
