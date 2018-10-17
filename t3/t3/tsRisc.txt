@@ -1,0 +1,19 @@
+        add r0, #4, r9      ;global variable
+
+min:    add r26, r0, r1     ;use r0 for v
+        sub r27, r1, r0 {C} ;b < v
+        jge min0
+        xor r0, r0, r0      ;nop
+        add r27, r0, r1     ;b = v
+min0:   sub r28, r1, r0 {C} ;c < v
+        jge min1
+        xor r0, r0, r0      ;nop
+        add r28, r0, r1     ;c = v
+min1:   ret r25, 0
+        xor r0, r0, r0      ;nop
+
+
+p:      add r9, r0, r10     ;
+        add r26, r0, r11    ;
+        add r27, r0, r12    ;
+        
