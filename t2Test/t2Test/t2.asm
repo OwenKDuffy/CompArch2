@@ -101,4 +101,16 @@ q:
 	pop rbx
 	ret 0
 
+
+	public qns
+fns db 'qns\n', 0AH, 00H
+qns:
+	;sub rsp, 32
+	lea rcx, fns
+	call printf
+	;add rsp, 32
+	mov rax, 0
+	ret 0
+
+
 	end	
