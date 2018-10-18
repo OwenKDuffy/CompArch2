@@ -13,7 +13,25 @@ min1:   ret r25, 0
         xor r0, r0, r0      ;nop
 
 
-p:      add r9, r0, r10     ;
-        add r26, r0, r11    ;
-        add r27, r0, r12    ;
-        
+p:      add r9, r0, r10     ;first param = g
+        add r26, r0, r11    ;second param = i
+        callr r25, min      ;call min(g, i, j)
+        add r27, r0, r12    ;third param = j
+        add r1, r0, r10     ;first param = returnval
+        add r28, r0, r11    ;second param = k
+        callr r25, min      ;call min(returnVal, k, l)
+        add r29, r0. r12    ;third param = l
+        ret r25, 0          ;return 0
+        xor r0, r0, r0      ;delay nop
+
+gcd:    sub r27, r0, r0 {c} ; b == 0
+        jeq gcd0            ;
+        add r26, r0, r1     ; returnVal = a
+        add r26, r0, r10    ; a
+        callr r25, mod      ; call mod(a, b)
+        add r27, r0, r10    ; b
+        add r27, r0, r10    ; b
+        callr r25, gcd      ; call gcd(b, mod(a, b))
+        add r1, r0, r11     ; second param = mod(a, b)
+gcd0:   ret r25, 0          ; return
+        xor r0, r0, r0      ; nop
