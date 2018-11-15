@@ -1,0 +1,9 @@
+﻿  helper.cpp
+  matrixMultiply.cpp
+c:\users\owen\documents\github\comparch2\matrixmultiply\matrixmultiply\matrixmultiply.cpp(50): warning C4477: 'printf' : format string '%zu' requires an argument of type 'unsigned int', but variadic argument 2 has type 'UINT64'
+  c:\users\owen\documents\github\comparch2\matrixmultiply\matrixmultiply\matrixmultiply.cpp(50): note: consider using '%llu' in the format string
+  c:\users\owen\documents\github\comparch2\matrixmultiply\matrixmultiply\matrixmultiply.cpp(50): note: consider using '%I64u' in the format string
+  Generating code
+  All 100 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Finished generating code
+  matrixMultiply.vcxproj -> C:\Users\Owen\Documents\GitHub\CompArch2\matrixMultiply\Release\matrixMultiply.exe
