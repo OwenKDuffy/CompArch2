@@ -1,0 +1,9 @@
+*
+
+!*.md
+!.gitignore
+!*.cpp
+!*.h
+!*.asm
+
+!*/
